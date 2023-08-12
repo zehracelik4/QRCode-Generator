@@ -105,5 +105,5 @@ clearEl.addEventListener('click', e=>{
 });
 
 dlEl.addEventListener('click', e=> {
-    qrCode.download({name:'qr', extension:'svg'});
+    qrCode.download({name:'qr', extension:'png'});
 })
