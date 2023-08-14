@@ -21,26 +21,8 @@ body {
 .header {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    padding: 25px 150px;
-    background: rgba(200, 115, 203, 0.196);
+    padding: 25px ;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(20px);
-    border-bottom: 2px solid rgba(255, 255, 255, .2);
-}
-
-.header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 04), transparent);
-    transition: .5s;
 }
 
 .header:hover::before {
@@ -48,6 +30,17 @@ body {
 }
 
 .logo {
+    position: flex;
+    top: 10px;
+    bottom: 943px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 63px;
+    color: #FFFFFF;
+    text-shadow: -2px -2px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    justify-content: center;
     color: #faf3fa;
     font-size: 30px;
     text-decoration: none;
@@ -57,20 +50,9 @@ body {
 }
 
 .logo:hover {
-    color: #681a8c;
+    color: #ebc1d0;
 }
 
-.navbar a {
-    color: #681a8c;
-    font-size: 18px;
-    text-decoration: none;
-    margin-left: 35px;
-    transition: .5s;
-}
-
-.navbar a:hover {
-    color: #fff;
-}
 
 .container {
     position: relative;
