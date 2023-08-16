@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(images/rainbow.jpg) no-repeat;
+    background: url(images/aesthetic.jpg) no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -53,8 +53,119 @@ body {
     color: #ebc1d0;
 }
 
+.side-nav {
+    width:  150px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: 0.2s;
+}
+
+
+.side-nav h4 {
+    width: 0;
+    overflow: hidden;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0 15px;
+}
+
+ul li {
+    font-size: large;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+ul li:hover {
+    background-color: rgba(86, 82, 82, 0.04);
+    transition: .2s ease;
+    border-radius: 20px;
+}
+
+ul li img {
+    width: 30px;
+    margin-right: 0px;
+}
+
+ul li a{
+    white-space: nowrap;
+    display: none;
+}
+
+ul li a.qr-create,
+ul li img.qr-icon {
+    margin-bottom: 35px;
+}
+
+ul li a.qr-scan,
+ul li img.scan-icon {
+    margin-bottom: 35px;
+}
+
+ul li a i {
+    color: #494949a1;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.side-nav:hover {
+    width: 250px;
+}
+
+.side-nav h4 {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.516);
+}
+
+.side-nav:hover ul li a {
+    display: block;
+}
+
+.side-nav:hover ul li img {
+    margin-right: 10px;
+}
+
+.side-nav:hover ul li {
+    justify-content: flex-start;
+}
+
+.side-nav a {
+    font-weight: bold;
+    color: #42013b;
+    text-decoration: none;
+}
+
+.side-nav ul li a.git {
+    color: #37183dcf;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.side-nav ul li a.git:hover {
+    color:#db96ae;
+    transition: .2s ease;
+}
+
 
 .container {
+    margin-left: 250px;
     position: relative;
     background-color: transparent;
     backdrop-filter: blur(15px);
@@ -122,3 +233,28 @@ button {
     cursor: pointer;
     width: 100%;
 }
+
+/* Media query */
+@media (max-width: 600px) {
+    .header {
+        padding: 35px; 
+    }
+
+    .container {
+        flex-direction:row;
+        padding: 25px; 
+    }
+}
+
+@media (max-width: 600px) {
+    .side-nav {
+        display: none;
+    }
+    .container {
+        flex-direction:row;
+        padding: 25px; 
+    }
+}
+
+
+

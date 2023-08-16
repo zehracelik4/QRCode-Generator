@@ -9,6 +9,7 @@ const dotColorEl2 = document.querySelector('#dot-color-2');
 const bgEl = document.querySelector('#bg-color');
 const dlEl = document.querySelector('#btn-dl');
 
+
 let op= {
     width: 100,
     height: 100,
