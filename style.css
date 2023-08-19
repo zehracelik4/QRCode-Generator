@@ -12,8 +12,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--primary-color);
     min-height: 110vh;
-    background: url(images/.jpg) no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -21,7 +21,7 @@ body {
 .header {
     position: fixed;
     top: 0;
-    padding: 25px ;
+    padding: 0;
     display: flex;
 }
 
@@ -37,10 +37,9 @@ body {
     font-weight: 700;
     font-size: 50px;
     line-height: 63px;
-    color: #FFFFFF;
+    color: #fff;
     text-shadow: -2px -2px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     justify-content: center;
-    color: #faf3fa;
     font-size: 30px;
     text-decoration: none;
     font-weight: 800;
@@ -49,7 +48,28 @@ body {
 }
 
 .logo:hover {
-    color: #ebc1d0;
+    color: #a1d4f9;
+}
+
+
+:root {
+    --primary-color: #edf2fc;
+    --secondary-color: #b7b7b774; 
+}
+
+.dark-theme {
+    --primary-color: #1d0015;
+    --secondary-color: #dac5df;
+}
+
+
+
+.dark-moon{
+    width: 40px;
+    cursor: pointer;
+    left: 350px;
+    position: absolute;
+    margin-top: 20px;
 }
 
 .side-nav {
@@ -59,14 +79,15 @@ body {
     top: 0;
     left: 0;
     padding: 30px 15px;
-    background: rgba(255, 252, 255, 0.338);
+    background: var(--secondary-color);
     backdrop-filter: blur(5px);
-    box-shadow: #000000a1 0px 0px 10px 0px;
+    box-shadow: #711f66d2 0px 0px 10px 0px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     transition: 0.2s;
     z-index: 10;
+    list-style: none;
 }
 
 .collapsed {
@@ -80,17 +101,30 @@ ul {
 
 ul li {
     font-size: large;
-    margin: 35px 0;
+    margin: 55px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    position: relative;
 }
+
 
 ul li:hover {
     background-color: rgba(86, 82, 82, 0.04);
-    transition: .3s ease;
+    transition: .1s ease;
     border-radius: 15px;
+}
+
+ul li::before {
+    content: "";
+    margin-bottom: -30px;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(119, 91, 172, 0.648);
+    bottom: 0;
+    left: 0;
 }
 
 ul li img {
@@ -105,6 +139,7 @@ ul li a{
 
 ul li a.qr-create,
 ul li img.qr-icon {
+    top: 0;
     margin-bottom: 35px;
 }
 
@@ -157,25 +192,11 @@ ul li a i {
     display: none;
 }
 
-.scannow {
-    margin-left: 150px;
-    position: center;
-    background-color: transparent;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(74, 106, 208, 0.815);
-    border-radius: 30px;
-    padding: 30px 15px 30px 30px;
-    text-align: center;
-    display: flex;
-    z-index: 2;
-}
-
 .container {
     margin-left: 150px;
     position: center;
-    background-color: transparent;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(105, 0, 105, 0.758);
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 5px 10px rgba(223, 148, 202, 0.749);
     border-radius: 30px;
     padding: 30px 15px 30px 30px;
     text-align: center;
@@ -188,9 +209,9 @@ ul li a i {
     max-width: 70%;
     max-height: 80%;
     position: fixed;
-    background-color: transparent;
+    background-color: var(--secondary-color);
     backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(215, 116, 143, 0.718);
+    box-shadow: 0 0 5px 10px rgba(208, 148, 223, 0.682);
     border-radius: 30px;
     padding: 30px 15px 30px 30px;
     text-align:start;
@@ -205,9 +226,9 @@ ul li a i {
     max-width: 70%;
     max-height: 80%;
     position: fixed;
-    background-color: transparent;
+    background-color: var(--secondary-color);
     backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(215, 116, 143, 0.718);
+    box-shadow: 0 0 5px 10px rgba(152, 148, 223, 0.749);
     border-radius: 30px;
     padding: 30px 15px 30px 30px;
     text-align:start;
@@ -222,9 +243,9 @@ ul li a i {
     max-width: 70%;
     max-height: 80%;
     position: fixed;
-    background-color: transparent;
+    background-color: var(--secondary-color);
     backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(215, 116, 143, 0.718);
+    box-shadow: 0 0 5px 10px rgba(148, 223, 201, 0.749);
     border-radius: 30px;
     padding: 30px 15px 30px 30px;
     text-align:start;
@@ -239,9 +260,9 @@ ul li a i {
     max-width: 70%;
     max-height: 80%;
     position: fixed;
-    background-color: transparent;
+    background-color: var(--secondary-color);
     backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(215, 116, 143, 0.718);
+    box-shadow: 0 0 5px 10px rgba(130, 81, 133, 0.749);
     border-radius: 30px;
     padding: 30px 15px 30px 30px;
     text-align:start;
@@ -256,7 +277,7 @@ h4 {
     font-weight: bold;
     margin-bottom: 25px;
     text-align: center;
-    color: #690874;
+    color: white;
 }
 
 b .definition {
@@ -311,7 +332,7 @@ input[type='range'] {
 button {
     cursor: pointer;
     border-radius: 5px;
-    color: #fff;
+    color: var(--secondary-color);
     background-color: rgb(233 30, 99);
 }
 
@@ -346,7 +367,7 @@ button {
         display: block;
     }
     .side-nav:hover {
-        display:;
+        display:none;
     }
     .container {
         flex-direction:row;
@@ -407,5 +428,16 @@ button {
     .toggle-button {
         display:flex;
         z-index: 1;
+    }
+    #darkmodemoon {
+        left: 175px;
+        margin-top:-10px;
+    }
+}
+
+@media (max-width: 700px) {
+    #darkmodemoon {
+        left: 175px;
+        margin-top:20px;
     }
 }

@@ -124,3 +124,14 @@ document.addEventListener('click', (event) => {
         sidebar.classList.add('collapsed');
     }
 });
+
+var darkmodemoon = document.getElementById("darkmodemoon");
+
+darkmodemoon.onclick = function(){
+    document.body.classList.toggle("dark-theme");
+    if(document.body.classList.contains("dark-theme")){
+        darkmodemoon.src = "images/2995008_colors_colour_rainbow_colored_sun_icon.svg";
+    }else{
+        darkmodemoon.src = "images/9071075_dark_mode_icon.svg";
+    }
+}
