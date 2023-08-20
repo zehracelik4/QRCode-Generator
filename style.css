@@ -329,19 +329,192 @@ input[type='range'] {
     accent-color: #bc386b;
 }
 
-button {
-    cursor: pointer;
-    border-radius: 5px;
-    color: var(--secondary-color);
-    background-color: rgb(233 30, 99);
+.button-container {
+    height: 15vh;
+    margin-inline: 2rem;
+    display: grid;
+    place-items: center;
 }
 
-.btn-download {
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
+.button {
+    position: relative;
+    transition: transform .4s;
+    text-decoration: none;
 }
 
+.button-content {
+    position: relative;
+    background: rgb(207, 152, 228);
+    padding: .8rem 1rem;
+    border-radius: 1.8rem;
+    border: 2px solid rgb(63, 0, 56);
+    color: #000;
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    overflow: hidden;
+}
+
+.button-text {
+    font-weight: 700;
+}
+
+.button-icon {
+    font-size: 1.5rem;
+    position: left;
+}
+
+.button-text,
+.button-icon {
+    position: relative;
+    z-index: 2;
+}
+
+.button-reflection-1,
+.button-reflection-2 {
+    width: 8px;
+    height: 120px;
+    background-color: rgba(219, 204, 206, 0.486);
+    rotate: 30deg;
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: -180%;
+    margin: auto;
+    transition: left .6s cubic-bezier(.2, .5, .2, 1.2);
+}
+
+.button-reflection-1::after {
+    content: '';
+    width: 20px;
+    height: 100%;
+    background-color: rgba(219, 204, 206, 0.486);
+    position: absolute;
+    top: -1rem;
+    left: 1.25rem;
+}
+
+.button-reflection-2::after {
+    content: '';
+    width: 20px;
+    height: 100%;
+    background-color: rgba(219, 204, 206, 0.486);
+    position: absolute;
+    top: -1rem;
+    left: .8rem;
+}
+
+.button img {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .5s, opacity .5s;
+}
+
+.button-watermelon {
+    width: 20px;
+    top: -14px;
+    left: -16px;
+    transform: rotate(48deg) scale(.1);
+}
+
+.button-grapes {
+    width: 40px;
+    right: -10px;
+    top: -4px;
+    transform: rotate(-48deg) scale(.1);
+}
+
+.button-blossom-1,
+.button-blossom-2 {
+    width: 13px;
+}
+
+.button-blossom-1 {
+    top: -8px;
+    left: 58px;
+    transform: scale(.1);
+}
+
+.button-blossom-2 {
+    right: 34px;
+    bottom: -8px;
+    transform: scale(.1);
+}
+
+.button-cherry {
+    width: 18px;
+    top: -18px;
+    right: 62px;
+    transform: scale(.1);
+}
+
+.button-strawberry {
+    width: 30px;
+    left: 15px;
+    bottom: -16px;
+    transform: rotate(-48deg) scale(.1);
+}
+
+.button-shadow {
+    width: 68%;
+    height: 33%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(242, 196, 248, 0.581);
+    padding: 1rem 1rem;
+    border-radius: 4rem;
+    border: 1px solid rgba(51, 0, 51, 0.61);
+    z-index: -1;
+    transition: transform .3s;
+}
+
+.button:hover .button-shadow {
+    transform: translate(-.5rem, .5rem);
+}
+
+.button:hover .button-reflection-1 {
+    left: 120%;
+}
+
+.button:hover .button-reflection-2 {
+    left: -70%;
+}
+
+.button:hover {
+    transform: rotate(-4deg) scale(1.1);
+}
+
+.button:hover img {
+    opacity: 1;
+}
+
+.button:hover .button-watermelon {
+    transform: scale(1.1);
+    transition-delay: .1s;
+}
+
+.button:hover .button-grapes {
+    transform: scale(1.1);
+}
+
+.button:hover .button-blossom-1 {
+    transform: translateY(-8px) scale(1.1);
+    transition-delay: .1s;
+}
+
+.button:hover .button-blossom-2 {
+    transform: translate(-20px, 20px) scale(1.1);
+}
+
+.button:hover .button-cherry {
+    transform: translateY(7px) rotate(-24deg) scale(1.1);
+}
+
+.button:hover .button-strawberry {
+    transform:rotate(-12deg) scale(1.1);
+}
 /* Media query */
 @media (max-width: 600px) {
     .header {
@@ -363,11 +536,12 @@ button {
         bottom: 0;
         left: 0;
         position: fixed;
-        width: 50px;
+        width: 43px;
         display: block;
     }
-    .side-nav:hover {
-        display:none;
+    .side-nav:hover{
+        width: 40%;
+        overflow:scroll;
     }
     .container {
         flex-direction:row;
@@ -421,13 +595,6 @@ button {
     .privacy-container {
         flex-direction: row;
         margin: 60px;
-    }
-    .side-nav {
-        display: none;
-    }
-    .toggle-button {
-        display:flex;
-        z-index: 1;
     }
     #darkmodemoon {
         left: 175px;
