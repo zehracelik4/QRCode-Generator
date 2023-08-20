@@ -188,10 +188,6 @@ ul li a i {
     transition: .2s ease;
 }
 
-.toggle-button {
-    display: none;
-}
-
 .container {
     margin-left: 150px;
     position: center;

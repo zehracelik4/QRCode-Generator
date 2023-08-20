@@ -17,9 +17,6 @@
     </nav>
     <div class="sidebar">
         <div class="side-nav">
-            <div class="toggle-button-container">
-                <div class="toggle-button" id="sidebarToggle">&#9776;</div>
-            </div>
             <ul>
                 <li><img src="images/qr-code-outline.svg" class="qr-icon"><a href="index.html" class="qr-create"><b>Create</b><br><i class="static-qr">Static QR Code</i></a></li>
                 <li><img src="images/help-outline.svg"><a href="question.html">What's QR Code?</a></li>
@@ -78,11 +75,11 @@
         </div>
         <div class="display">
             <div id="canvas"></div>
-            <p>300px x 300px</p>
+            <p id="sizeInfo"></p>
             <div class="button-container">
                 <a href="#" class="button">
                     <div class="button-content">
-                        <span class="button-text" id="buttontext" type="button" >Download</span>
+                        <span class="button-text" id="buttontext" type="button">Download</span>
                         
                         <div class="button-reflection-1"></div>
                         <div class="button-reflection-2"></div>
@@ -178,15 +175,23 @@ bgEl.addEventListener('input', e=>{
     render();
 });
 
-var qrCode;
-function render()
-{
-    qrCode = new QRCodeStyling(op);
-    let canvasEl = document.querySelector('#canvas');
-    canvasEl.innerHTML='';
+function render() {
+  qrCode = new QRCodeStyling(op);
+  let canvasEl = document.querySelector('#canvas');
+  canvasEl.innerHTML = '';
+
+  if (op.data) {
     qrCode.append(canvasEl);
-    canvasEl.nextElementSibling.innerHTML = `${op.width}px x ${op.height}px`
+    canvasEl.nextElementSibling.innerHTML = `${op.width}px x ${op.height}px`;
+  } else {
+    canvasEl.nextElementSibling.innerHTML = '';
+  }
 }
+
+render();
+
+
+
 
 function browse(){
     logoEl.click();
