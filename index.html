@@ -76,7 +76,7 @@
         <div class="display">
             <div id="canvas"></div>
             <p id="sizeInfo"></p>
-            <div class="button-container">
+            <div class="button-container" id="buttonContainer">
                 <a href="#" class="button">
                     <div class="button-content">
                         <span class="button-text" id="buttontext" type="button">Download</span>
@@ -107,6 +107,7 @@ const dotColorEl1 = document.querySelector('#dot-color-1');
 const dotColorEl2 = document.querySelector('#dot-color-2');
 const bgEl = document.querySelector('#bg-color');
 const buttontextEl = document.querySelector('#buttontext');
+const buttonContainerEl = document.querySelector('#buttonContainer');
 
 
 let op= {
@@ -183,8 +184,10 @@ function render() {
   if (op.data) {
     qrCode.append(canvasEl);
     canvasEl.nextElementSibling.innerHTML = `${op.width}px x ${op.height}px`;
+    buttonContainerEl.style.display = "flex";
   } else {
     canvasEl.nextElementSibling.innerHTML = '';
+    buttonContainerEl.style.display = "none";
   }
 }
 
