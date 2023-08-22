@@ -21,19 +21,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     };
 });
-
-const sidebar = document.querySelector('.sidebar');
-const toggleButton = document.getElementById('sidebarToggle');
-
-toggleButton.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-});
-
-document.addEventListener('click', (event) => {
-    const isToggleOrSidebar = toggleButton.contains(event.target) || sidebar.contains(event.target);
-    const isCollapsed = sidebar.classList.contains('collapsed');
-
-    if (!isToggleOrSidebar && !isCollapsed) {
-        sidebar.classList.add('collapsed');
-    }
-});

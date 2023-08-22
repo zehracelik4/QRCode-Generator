@@ -69,10 +69,6 @@
                 <input type="color" id="dot-color-1" class="input-2x">
                 <input type="color" id="dot-color-2" class="input-2x">
             </div>
-            <div class="input-wrap">
-                <label for="bg-color"><b>Background Color :</b></label>
-                <input type="color" id="bg-color" class="input-2x">
-            </div>
         </div>
         <div class="display">
             <div id="canvas"></div>
@@ -99,6 +95,30 @@
 </body>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const darkmodemoon = document.getElementById("darkmodemoon");
+    const body = document.body;
+
+
+    const darkModePreference = localStorage.getItem('darkModePreference');
+    if (darkModePreference === 'enabled') {
+    body.classList.add('dark-theme');
+    darkmodemoon.src = "images/2995008_colors_colour_rainbow_colored_sun_icon.svg";
+    }
+
+    darkmodemoon.onclick = function() {
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+        darkmodemoon.src = "images/2995008_colors_colour_rainbow_colored_sun_icon.svg";
+        localStorage.setItem('darkModePreference', 'enabled');
+    } else {
+        darkmodemoon.src = "images/9071075_dark_mode_icon.svg";
+        localStorage.setItem('darkModePreference', 'disabled');
+    }
+    };
+});
+
 const textEl = document.querySelector('#data');
 const sizeEl = document.querySelector('#size');
 const logoEl = document.querySelector('#logo');
@@ -172,35 +192,27 @@ dotColorEl2.addEventListener('input', e=>{
     render();
 });
 
-bgEl.addEventListener('input', e=>{
-    op.backgroundOptions.color = e.target.value;
-    render();
-});
 
 function render() {
-  qrCode = new QRCodeStyling(op);
-  let canvasEl = document.querySelector('#canvas');
-  canvasEl.innerHTML = '';
+qrCode = new QRCodeStyling(op);
+let canvasEl = document.querySelector('#canvas');
+canvasEl.innerHTML = '';
 
-  if (op.data) {
+if (op.data) {
     qrCode.append(canvasEl);
     canvasEl.nextElementSibling.innerHTML = `${op.width}px x ${op.height}px`;
     buttonContainerEl.style.display = "flex";
-  } else {
+} else {
     canvasEl.nextElementSibling.innerHTML = '';
     buttonContainerEl.style.display = "none";
-  }
+}
 }
 
 render();
 
-
-
-
 function browse(){
     logoEl.click();
 }
-
 logoEl.addEventListener('change', e=> {
     let file = e.target.files[0];
     let reader = new FileReader();
@@ -212,31 +224,7 @@ logoEl.addEventListener('change', e=> {
 });
 
 buttontextEl.addEventListener('click', e=> {
-    qrCode.download({name:'qr', extension:'png'});
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const darkmodemoon = document.getElementById("darkmodemoon");
-    const body = document.body;
-
-
-    const darkModePreference = localStorage.getItem('darkModePreference');
-    if (darkModePreference === 'enabled') {
-    body.classList.add('dark-theme');
-    darkmodemoon.src = "images/2995008_colors_colour_rainbow_colored_sun_icon.svg";
-    }
-
-    darkmodemoon.onclick = function() {
-    body.classList.toggle("dark-theme");
-
-    if (body.classList.contains("dark-theme")) {
-        darkmodemoon.src = "images/2995008_colors_colour_rainbow_colored_sun_icon.svg";
-        localStorage.setItem('darkModePreference', 'enabled');
-    } else {
-        darkmodemoon.src = "images/9071075_dark_mode_icon.svg";
-        localStorage.setItem('darkModePreference', 'disabled');
-    }
-    };
+    qrCode.download({name:'qrcode', extension:'png'});
 });
 </script>
 </html>

@@ -59,7 +59,7 @@ body {
 
 .dark-theme {
     --primary-color: #1d0015;
-    --secondary-color: #dac5df;
+    --secondary-color: #dac5dfa4;
 }
 
 
@@ -282,7 +282,7 @@ b .definition {
 
 .setting {
     padding-right: 15px;
-    min-width: 380px;
+    min-width: 370px;
 }
 
 .input-wrap {
@@ -294,10 +294,14 @@ b .definition {
 
 .input-1x {
     width: 100%;
+    margin-left: 9px;
 }
 
 .input-2x {
-    width: 50%;
+    width: 7%;
+    margin-right: 15px;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
 label {
@@ -325,6 +329,7 @@ input[type='range'] {
     accent-color: #bc386b;
 }
 
+/* DOWNLOAD BUTTON */
 .button-container {
     height: 15vh;
     margin-inline: 2rem;
