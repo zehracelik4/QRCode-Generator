@@ -36,25 +36,32 @@
             <h4>Create Your Own QR Code!</h4>
             <div class="input-wrap">
                 <label for="data"><b>Data :</b></label>
-                <textarea id="data" class="input-1x">QRANGER</textarea>
+                <textarea id="data" class="input-1x"></textarea>
             </div>
             <div class="input-wrap">
                 <label for="size"><b>Size :</b></label>
-                <input type="range" id="size" min="10" max="30" value="1" class="input-1x">
+                <input type="range" id="size" min="10" max="30" value="1" class="input-3x">
             </div>
             <div class="input-wrap">
-                <label for="logo"><b>Logo :</b></label>
-                <input type="file" id="logo" hidden>
+                <label for="logo"><b>Logo:</b></label>
+                <select id="icons" class="pictures">
+                    <option value="">Select a logo</option>
+                    <option value="images/facebook.png">Facebook Logo</option>
+                    <option value="images/instagram.png">Instagram Logo</option>
+                    <option value="images/twitter.png">Twitter Logo</option>
+                    <option value="images/github.png">Github Logo</option>
+                </select>
+                <p class="logo-selection"><i>or</i></p>
+                <button onclick="browse()" class="loadedimage">Load an Image</button>
                 <div class="input-2x">
-                    <a href="javascript:browse();"><span class="material-symbols-outlined">photo</span></a>
                 </div>
             </div>
             <div class="input-wrap">
                 <label for="margin"><b>Margin :</b></label>
-                <input type="range" id="margin" value="0" min="1" max="30" class="input-1x">
+                <input type="range" id="margin" value="0" min="1" max="20" class="input-3x">
             </div>
             <div class="input-wrap">
-                <label for="margin"><b>Dot Mode:</b></label>
+                <label for="margin"><b>Dot :</b></label>
                 <select id="dot" class="input-1x">
                     <option value="square">Square</option>
                     <option value="dots">Dots</option>
@@ -121,15 +128,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const textEl = document.querySelector('#data');
 const sizeEl = document.querySelector('#size');
-const logoEl = document.querySelector('#logo');
+const logoEl = document.querySelector('#icons');
 const marginEl = document.querySelector('#margin');
 const dotModeEl = document.querySelector('#dot');
 const dotColorEl1 = document.querySelector('#dot-color-1');
 const dotColorEl2 = document.querySelector('#dot-color-2');
-const bgEl = document.querySelector('#bg-color');
 const buttontextEl = document.querySelector('#buttontext');
 const buttonContainerEl = document.querySelector('#buttonContainer');
 
+let qrCode;
 
 let op= {
     width: 100,
@@ -208,20 +215,50 @@ if (op.data) {
 }
 }
 
-render();
-
-function browse(){
-    logoEl.click();
+function browse() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.addEventListener('change', handleFileUpload);
+    input.click();
 }
-logoEl.addEventListener('change', e=> {
-    let file = e.target.files[0];
-    let reader = new FileReader();
-    reader.onload = ()=> {
-        op.image = reader.result;
-        render();
-    },
-    reader.readAsDataURL(file);
+
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const uploadedImage = reader.result;
+            placeImageInQRCode(uploadedImage);
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+logoEl.addEventListener('change', e => {
+    const selectedLogo = e.target.value;
+    placeImageInQRCode(selectedLogo);
 });
+
+logoEl.addEventListener('change', e => {
+    const selectedLogo = e.target.value;
+    if (selectedLogo === "Facebook Logo") {
+        placeImageInQRCode("images/facebook.png"); 
+    } else if (selectedLogo === "Instagram Logo") {
+        placeImageInQRCode("images/instagram.png");
+    } else if (selectedLogo === "Twitter Logo") {
+        placeImageInQRCode("images/twitter.png"); 
+    } else if (selectedLogo === "Github Logo") {
+        placeImageInQRCode("images/github.png"); 
+    }
+});
+
+function placeImageInQRCode(imageSrc) {
+    op.image = imageSrc;
+    render();
+}
+
+render();
 
 buttontextEl.addEventListener('click', e=> {
     qrCode.download({name:'qrcode', extension:'png'});
